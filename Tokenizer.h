@@ -52,7 +52,15 @@ public:
     {
         cur_pointer = p;
     }
+    Tokenizer(const Tokenizer& tokenizer)
+    {
+        cur_pointer=tokenizer.cur_pointer;
+    }
     Token get_token();
     char *next();
+    void rollback(Token *token);
+    void set_pointer();
+    void get_pointer();
+
 };
 #endif

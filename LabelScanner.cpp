@@ -1,6 +1,15 @@
 #include <iostream>
 #include "LabelScanner.h"
 
+static LabelScanner *LabelScanner::GetInstance(char *p)
+{
+    if (label_scanner == nullptr)
+    {
+        label_scanner = new LabelScanner(p);
+    }
+    return label_scanner;
+}
+
 LabelScanner::LabelScanner(char *p) : tokenizer(p)
 {
     // tokenizer = Tokenizer(p);
@@ -50,14 +59,14 @@ void LabelScanner::scan_labels()
     }
 }
 
-int main(int argc, char *argv[])
-{
-    char buff[100] = "100 FOR";
-    LabelScanner label_scanner = LabelScanner(buff);
-    label_scanner.scan_labels();
-    label_scanner.show_label();
-    // Tokenizer tokenizer = Tokenizer(buff);
-    // Token token = tokenizer.get_token();
-    // printf("%s", token.data);
-    // token.show();
-}
+// int main(int argc, char *argv[])
+// {
+//     char buff[100] = "100 FOR X = 1 TO 10";
+//     LabelScanner label_scanner = LabelScanner(buff);
+//     label_scanner.scan_labels();
+//     label_scanner.show_label();
+//     // Tokenizer tokenizer = Tokenizer(buff);
+//     // Token token = tokenizer.get_token();
+//     // printf("%s", token.data);
+//     // token.show();
+// }
