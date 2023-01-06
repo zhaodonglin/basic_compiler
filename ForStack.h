@@ -1,3 +1,6 @@
+#ifndef FORSTACK_H
+#define FORSTACK_H
+
 #include "tokenizer.h"
 #include <stack>
 using namespace std;
@@ -27,5 +30,6 @@ class ForStack {
         stack<for_stack_element*> for_stack;
         static ForStack * instance;
 };
+#endif
 
 

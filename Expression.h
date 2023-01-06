@@ -1,3 +1,6 @@
+#ifndef EXPRESSION_H
+#define EXPRESSION_H
+
 #include "Tokenizer.h"
 #include <vector>
 using namespace std;
@@ -39,5 +42,7 @@ private:
     void parse();
 
     int find_lowest_token(vector<parsed_token> parsed_tokens);
-    TreeNode* Expression::create_tree(vector<parsed_token> tokens);
+    TreeNode* create_tree(vector<parsed_token> tokens);
+    int calculator(struct TreeNode *root);
 };
+#endif

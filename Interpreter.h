@@ -20,15 +20,5 @@ private:
     Token token;
 };
 
-class ExpressionInterpreter
-{
-public:
-    ExpressionInterpreter(Tokenizer *tokenizer);
-    float evaluate();
-
-private:
-    Tokenizer *tokenizer;
-    Token token;
-};
 
 #endif

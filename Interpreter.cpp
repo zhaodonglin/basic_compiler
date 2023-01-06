@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Interpreter.h"
+#include "Expression.h"
 #include "VariableTable.h"
 #include "ForStack.h"
 
@@ -41,7 +42,7 @@ void Interpreter::exec_assignment()
         exit(-1);
     }
 
-    float value = ExpressionInterpreter(&tokenizer).evaluate();
+    int value = Expression(&tokenizer).evaluate();
     VariableTable *variable_table = VariableTable::GetInstance();
     variable_table->save(name, value);
 
@@ -82,7 +83,7 @@ void Interpreter::exec_print()
         {
             tokenizer.rollback(&token);
 
-            ExpressionInterpreter expression = ExpressionInterpreter(&tokenizer);
+            Expression expression = Expression(&tokenizer);
             int value = expression.evaluate();
             printf("%s", "-------------------");
             printf("\n%f\n", value);
@@ -113,7 +114,7 @@ void Interpreter::exec_for()
     }
 
     char *next_p = NULL;
-    int initial_val = (int)ExpressionInterpreter(&tokenizer).evaluate();
+    int initial_val = (int)Expression(&tokenizer).evaluate();
     printf("%s\n", name);
     VariableTable::GetInstance()->save(name, initial_val);
     printf("%d\n", initial_val);
@@ -125,7 +126,7 @@ void Interpreter::exec_for()
         exit(-1);
     }
 
-    int target_val = (int)ExpressionInterpreter(&tokenizer).evaluate();
+    int target_val = (int)Expression(&tokenizer).evaluate();
     // char *p = read_to_end_of_line(next_p);
     token = tokenizer.get_token();
     if (token.get_type() != LINE_BREAK) {
@@ -181,11 +182,3 @@ void Interpreter::exec_keyword()
     }
 }
 
-ExpressionInterpreter::ExpressionInterpreter(Tokenizer *tokenizer) : tokenizer(tokenizer)
-{
-    token = tokenizer->get_token();
-}
-
-float ExpressionInterpreter::evaluate()
-{
-}

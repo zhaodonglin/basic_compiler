@@ -1,5 +1,6 @@
 #include "ForStack.h"
 
+ForStack* ForStack::instance = nullptr;
 ForStack* ForStack::GetInstance() {
     if (instance == nullptr) {
         instance = new ForStack();

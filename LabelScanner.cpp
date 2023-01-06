@@ -1,7 +1,8 @@
 #include <iostream>
 #include "LabelScanner.h"
 
-static LabelScanner *LabelScanner::GetInstance(char *p)
+LabelScanner *LabelScanner::label_scanner=nullptr;
+LabelScanner *LabelScanner::GetInstance(char *p)
 {
     if (label_scanner == nullptr)
     {

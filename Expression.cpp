@@ -41,20 +41,16 @@ void Expression::parse() {
                 weight -= 4;
                 break;
             case '+':
-                weight += 1;
-                parsed_tokens.push_back(parsed_token(weight, token));
+                parsed_tokens.push_back(parsed_token(weight+1, token));
                 break;
             case '-':
-                weight += 1;
-                parsed_tokens.push_back(parsed_token(weight, token));
+                parsed_tokens.push_back(parsed_token(weight+1, token));
                 break;
             case '*':
-                weight += 2;
-                parsed_tokens.push_back(parsed_token(weight, token));
+                parsed_tokens.push_back(parsed_token(weight+2, token));
                 break;
             case '/':
-                weight += 2;
-                parsed_tokens.push_back(parsed_token(weight, token));
+                parsed_tokens.push_back(parsed_token(weight+2, token));
                 break;
             }
         }
@@ -88,8 +84,8 @@ TreeNode* Expression::create_tree(vector<parsed_token> tokens)
         return new TreeNode(tokens[0].token, nullptr, nullptr);
     } else {
         int lowest = find_lowest_token(tokens);
-        std::vector<parsed_token> left(v.begin(), v.begin()+lowest-1);
-        std::vector<parsed_token> right(v.begin()+lowest+1, v.ned());
+        std::vector<parsed_token> left(tokens.begin(), tokens.begin()+lowest-1);
+        std::vector<parsed_token> right(tokens.begin()+lowest+1, tokens.end());
 
         return new TreeNode(tokens[lowest].token,
         create_tree(left),
@@ -98,7 +94,7 @@ TreeNode* Expression::create_tree(vector<parsed_token> tokens)
     }
 }
 
-int calculator(struct TreeNode *root)
+int Expression::calculator(struct TreeNode *root)
 {
     int result = 0;
     TOKEN_TYPE token_type = root->token.get_type();

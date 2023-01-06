@@ -1,5 +1,6 @@
 #include "VariableTable.h"
 
+VariableTable* VariableTable::variable_table = nullptr;
 void VariableTable::save(char *name, float value)
 {
     string s = name;

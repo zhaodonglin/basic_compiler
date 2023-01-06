@@ -135,16 +135,9 @@ char *Tokenizer::next()
 
 void Tokenizer::rollback(Token *token) {
     char *data = token->get_data();
-    while ('\0' != data) {
+    while ('\0' != *data) {
         data++;
         cur_pointer--;
     }
 }
 
-void Tokenizer::get_pointer(){
-    return cur_pointer;
-}
-
-void Tokenizer::set_pointer(char *p) {
-    cur_pointer = p;
-}

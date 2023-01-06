@@ -48,6 +48,9 @@ private:
     bool isend(char p);
 
 public:
+    Tokenizer(){
+        cur_pointer =nullptr;
+    }
     Tokenizer(char *p)
     {
         cur_pointer = p;
@@ -59,8 +62,6 @@ public:
     Token get_token();
     char *next();
     void rollback(Token *token);
-    void set_pointer();
-    void get_pointer();
 
 };
 #endif
