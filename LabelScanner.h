@@ -12,6 +12,7 @@ public:
     void add_to_label();
     void show_label();
     void scan_labels();
+    char* get_label_loc(int label);
     static LabelScanner *GetInstance(char *p);
 
 private:

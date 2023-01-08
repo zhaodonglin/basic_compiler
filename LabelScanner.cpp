@@ -60,6 +60,10 @@ void LabelScanner::scan_labels()
     }
 }
 
+char* LabelScanner::get_label_loc(int label) {
+    return table[label];
+}
+
 // int main(int argc, char *argv[])
 // {
 //     char buff[100] = "100 FOR X = 1 TO 10";
