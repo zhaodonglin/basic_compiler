@@ -29,6 +29,9 @@ void Interpreter::run()
         }
         token = tokenizer.get_token();
         token_type = token.get_type();
+        if (token_type == EOP) {
+            exit(1);
+        }
     };
 }
 
@@ -191,7 +194,7 @@ void Interpreter::exec_if() {
     }
     char oper = *token.get_data();
     int y = Expression(&tokenizer).evaluate();
-    Token token = tokenizer.get_token();
+    token = tokenizer.get_token();
     if (strcmp(token.get_data(), "THEN") != 0) {
         printf("In exec_if, expect then.");
         exit(-1);
@@ -209,7 +212,6 @@ void Interpreter::exec_if() {
             token = tokenizer.get_token();
         } while (token.get_type() != LINE_BREAK);
     }
-
 }
 
 void Interpreter::exec_keyword()

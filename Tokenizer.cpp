@@ -3,7 +3,7 @@ using namespace std;
 
 #include "Tokenizer.h"
 
-const char *KEYWORDS[] = {"PRINT", "FOR", "NEXT", "END", "TO"};
+const char *KEYWORDS[] = {"PRINT", "FOR", "NEXT", "END", "TO", "GOSUB", "IF", "GOTO", "RETURN", "THEN"};
 
 bool Token::iskeyword(char *p)
 {
@@ -73,7 +73,7 @@ bool Tokenizer::islinebreak(char p)
 
 bool Tokenizer::isoperator(char p)
 {
-    return '\0' != p && NULL != strchr("+-=*/%()", p);
+    return '\0' != p && NULL != strchr("+-=*/%()<>", p);
 }
 
 bool Tokenizer::isend(char p)

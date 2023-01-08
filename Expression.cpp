@@ -52,6 +52,9 @@ void Expression::parse() {
             case '/':
                 parsed_tokens.push_back(parsed_token(weight+2, token));
                 break;
+            default:
+                tokenizer->rollback(&token);
+                return;
             }
         }
         else

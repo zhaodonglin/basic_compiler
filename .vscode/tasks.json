@@ -13,6 +13,7 @@
                 "VariableTable.cpp",
                 "Expression.cpp",
                 "ForStack.cpp",
+                "GoSubStack.cpp",
                 "Interpreter.cpp",
                 "LabelScanner.cpp",
                 "-o",
