@@ -107,7 +107,7 @@ Token Tokenizer::get_token()
     else if (islinebreak(*next))
     {
         cur_pointer = next + 1;
-        return Token(LINE_BREAK, NULL, 0);
+        return Token(LINE_BREAK, start, 1);
     }
     else if (isalpha(*next))
     {
@@ -122,7 +122,7 @@ Token Tokenizer::get_token()
     else if (isoperator(*next))
     {
         cur_pointer = next + 1;
-        return Token(OPERATOR, start, next - start);
+        return Token(OPERATOR, start, 1);
     }
 
     return token;

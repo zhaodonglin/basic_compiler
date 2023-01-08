@@ -7,9 +7,17 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                // "${file}",
+                "main.cpp",
+                "Tokenizer.cpp",
+                "VariableTable.cpp",
+                "Expression.cpp",
+                "ForStack.cpp",
+                "Interpreter.cpp",
+                "LabelScanner.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                // "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "main.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

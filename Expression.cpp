@@ -56,6 +56,7 @@ void Expression::parse() {
         }
         else
         {
+            tokenizer->rollback(&token);
             break;
         }
         token = tokenizer->get_token();
@@ -84,7 +85,7 @@ TreeNode* Expression::create_tree(vector<parsed_token> tokens)
         return new TreeNode(tokens[0].token, nullptr, nullptr);
     } else {
         int lowest = find_lowest_token(tokens);
-        std::vector<parsed_token> left(tokens.begin(), tokens.begin()+lowest-1);
+        std::vector<parsed_token> left(tokens.begin(), tokens.begin()+lowest);
         std::vector<parsed_token> right(tokens.begin()+lowest+1, tokens.end());
 
         return new TreeNode(tokens[lowest].token,

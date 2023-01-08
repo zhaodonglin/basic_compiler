@@ -13,7 +13,7 @@ Interpreter::Interpreter(char *p) : tokenizer(p)
 void Interpreter::run()
 {
     TOKEN_TYPE token_type = token.get_type();
-    while (token_type != END)
+    while (true)
     {
         // the first token should be NUMBER or KEYWORD or VARIABLE
         // NUMBER is the label, label is processed in the first traverse.
@@ -86,10 +86,10 @@ void Interpreter::exec_print()
             Expression expression = Expression(&tokenizer);
             int value = expression.evaluate();
             printf("%s", "-------------------");
-            printf("\n%f\n", value);
+            printf("\n%d\n", value);
         }
         token = tokenizer.get_token();
-        TOKEN_TYPE token_type = token.get_type();
+        token_type = token.get_type();
 
     } while (token_type != END && token_type != LINE_BREAK);
 
